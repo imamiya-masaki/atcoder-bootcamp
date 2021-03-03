@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"math"
 	"os"
 	"strconv"
@@ -11,36 +10,11 @@ import (
 
 func main() {
 	scan_init()
-	n := scanInt()
-	k := scanInt()
-	a := scanInts(n)
-	searchs := []int{0,0}
-	searchIndex := 0
-	for i:= 0; i<n; i++ {
-		if a[i] == 1 {
-			searchIndex++
-		}else {
-			searchs[searchIndex]++
-		}
-	}
-	cnt := 100000+1
-	for kc := 0; kc <= k - 1; kc++ {
-		counter := 1
-		left := searchs[0] - kc
-		right := searchs[1] - ((k-1) - kc)
-		counter += left / (k-1)
-		if left % (k-1) != 0 {
-			counter++
-		}
-		counter += right / (k-1)
-		if right % (k-1) != 0 {
-			counter++
-		}
-		if cnt > counter {
-			cnt = counter
-		}
-	}
-	fmt.Println(cnt)
+	a := scanInt()
+	b := scanInt()
+	c := scanInt()
+	d := scanInt()
+
 }
 
 var sc = bufio.NewScanner(os.Stdin)
