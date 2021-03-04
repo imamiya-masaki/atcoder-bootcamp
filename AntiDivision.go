@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"math"
 	"os"
 	"strconv"
@@ -14,11 +15,38 @@ func main() {
 	b := scanInt()
 	c := scanInt()
 	d := scanInt()
-
+	cCount := b/c - (a-1)/c
+	dCount := b/d - (a-1)/d
+	cdCount := b/lcm(c,d) - (a-1)/lcm(c,d)
+	counter := cCount + dCount - cdCount
+	fmt.Println(b-(a-1)-counter)
 }
 
+func lcm(a,b int) int{
+	// 最大公倍数を返す
+	d := gcd(a,b)
+	return a/d*b
+}
 var sc = bufio.NewScanner(os.Stdin)
-
+func gcd(a int, b int) int {
+		// aの方が小さくなるように設定する
+		// ユークリッドの互除法で最大公約数を出す
+		if a>b {
+			//swap
+			tmp := a
+			a = b
+			b = tmp
+		}
+		if a == 0 {
+			return b
+		}
+		r := b % a
+		if r != 0 {
+			return gcd(r,a)
+		} else {
+			return a
+		}
+	}
 func scan_init() {
 	sc.Buffer([]byte{}, math.MaxInt64)
 	sc.Split(bufio.ScanWords)
